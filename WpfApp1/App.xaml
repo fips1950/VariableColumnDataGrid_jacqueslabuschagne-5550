@@ -1,0 +1,21 @@
+﻿<Application x:Class="WpfApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <local:BackGroundConverter x:Key="bgConv"/>
+    <Style x:Key="dgcellStyle" TargetType="DataGridCell">
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+      <Setter Property="Background" Value="white"/>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}, Converter={StaticResource bgConv}}" Value="1">
+          <Setter Property="Background" Value="LightGreen"/>
+        </DataTrigger>
+        <DataTrigger Binding="{Binding Path=Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}, Converter={StaticResource bgConv}}" Value="-1">
+          <Setter Property="Background" Value="LightPink"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </Application.Resources>
+</Application>
